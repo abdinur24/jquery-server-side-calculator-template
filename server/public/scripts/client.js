@@ -6,20 +6,20 @@ function handleReady(){
     $('#submit-button').on('click', getCalculation);
 
     $('#add-button').on('click', () => {
-        operator === '+'
+        operator = '+'
     });
     $('#sub-button').on('click', () => {
-        operator === '-'
+        operator = '-'
     });
     $('#multi-button').on('click', () => {
-        operator === '*'
+        operator = '*'
     });
     $('#div-button').on('click', () => {
-        operator === '/'
+        operator = '/'
     });
 }
 
-let operator = '';
+let operator = '+';
 
 function getCalculation(){
     $.ajax({
@@ -40,12 +40,14 @@ function getCalculation(){
 function showCalculations(){
     $.ajax({
         method: 'GET',
-        url: '/calculation'
+        url: '/history'
     }).then(function (response){
+        console.log(response)
        let history = response
+    //    $('#total').empty();
        for(let i=0; i < history.length; i++){
            $('#total').append(`
-                <li>${history[i].number1, history[i].operator , history[i].number2}</li>
+                <li>${history[i].number1} ${history[i].operator}  ${history[i].number2}</li>
            `)
        }
     })

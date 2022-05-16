@@ -11,11 +11,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('server/public'));
 
 let calcHistory = [];
-let result = '';
+
 
 
 app.post('/calculation', (req, res) => {
     let sum = req.body;
+    let result;
     console.log(req.body);
     if(sum.operator === '+'){
         result = Number(sum.number1) + Number(sum.number2)
@@ -28,12 +29,19 @@ app.post('/calculation', (req, res) => {
     }else{
         console.log('Equation not working')
     }
+
+    let objResult = {
+        number1: sum.number1,
+        operator: sum.operator,
+        number2: sum.number2,
+        result: result
+    }
     console.log(result);
-    calcHistory.push(sum)
+    calcHistory.push(objResult)
     res.sendStatus(200);
 });
 
-app.get('/calculation', (req, res) => {
+app.get('/history', (req, res) => {
     // ...
     console.log(calcHistory);
     res.send(calcHistory);
