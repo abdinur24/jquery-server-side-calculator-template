@@ -1,0 +1,23 @@
+{
+  "name": "jquery-server-side-calculator-template",
+  "version": "1.0.0",
+  "description": "[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdinur24/jquery-server-side-calculator-template.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdinur24/jquery-server-side-calculator-template/issues"
+  },
+  "homepage": "https://github.com/abdinur24/jquery-server-side-calculator-template#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
