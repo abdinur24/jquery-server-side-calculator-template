@@ -5,21 +5,30 @@ function handleReady(){
 
     $('#submit-button').on('click', getCalculation);
 
-    $('#add-button').on('click', () => {
-        operator = '+'
+    $('#add-button').on('click', function(){
+        operator = '+';
     });
-    $('#sub-button').on('click', () => {
-        operator = '-'
+    $('#sub-button').on('click', function(){
+        operator = '-';
     });
-    $('#multi-button').on('click', () => {
-        operator = '*'
+    $('#multi-button').on('click', function(){
+        operator = '*';
     });
-    $('#div-button').on('click', () => {
-        operator = '/'
+    $('#div-button').on('click', function(){
+        operator = '/';
     });
+
+    $('#clear-button').on('click', function(){
+        $('#first-number').val('');
+        $('#second-number').val('');
+    })
+
+    $('#delete').on('click', deleteHistory);
+
+    showCalculations();
 }
 
-let operator = '+';
+let operator = '';
 
 function getCalculation(){
     $.ajax({
@@ -43,14 +52,28 @@ function showCalculations(){
         url: '/history'
     }).then(function (response){
         console.log(response)
-       let history = response
-    //    $('#total').empty();
+       let history = response;
+       $('#total').empty();
        for(let i=0; i < history.length; i++){
            $('#total').append(`
                 <li>${history[i].number1} ${history[i].operator}  ${history[i].number2}</li>
            `)
        }
+       if (history.length > 0) {
+        $('#calc-totals').text(history[history.length - 1].result);
+     }
     })
 }
+
+function deleteHistory(){
+    $.ajax({
+        method: 'DELETE',
+        url:    '/history'
+    }).then(function(response){
+        showCalculations();
+        $('#calc-totals').text('');
+    })
+}
+
 
 

@@ -21,22 +21,22 @@ app.post('/calculation', (req, res) => {
     if(sum.operator === '+'){
         result = Number(sum.number1) + Number(sum.number2)
     }else if (sum.operator === '-'){
-       result =  Number(sum.number1) - Number(sum.nummber2)
+        result = Number(sum.number1) - Number(sum.number2)
     }else if (sum.operator === '*'){
-       result =  Number((sum.number1) * (sum.nummber2))
+        result = Number(sum.number1) * Number(sum.number2)
     }else if (sum.operator === '/'){
-       result = Number(sum.number1) / Number(sum.nummber2)
+        result = Number(sum.number1) / Number(sum.number2)
     }else{
         console.log('Equation not working')
     }
 
     let objResult = {
-        number1: sum.number1,
+        number1: Number(sum.number1),
         operator: sum.operator,
-        number2: sum.number2,
+        number2: Number(sum.number2),
         result: result
     }
-    console.log(result);
+    console.log(sum.operator);
     calcHistory.push(objResult)
     res.sendStatus(200);
 });
@@ -47,10 +47,11 @@ app.get('/history', (req, res) => {
     res.send(calcHistory);
 });
 
-app.get('/clear', (req, res) => {
+app.delete('/history', (req, res) => {
     calcHistory = [];
     res.sendStatus(200);
 });
+
 
 
 
