@@ -3,7 +3,7 @@ $(document).ready(handleReady)
 function handleReady(){
     console.log('jq ready')
 
-    $('#submit-button').on('click', showCalculations);
+    $('#submit-button').on('click', getCalculation);
 
     $('#add-button').on('click', () => {
         operator === '+'
@@ -24,7 +24,7 @@ let operator = '';
 function getCalculation(){
     $.ajax({
         method: 'POST',
-        ulr: '/calculation',
+        url: '/calculation',
         data: {
            number1: $('#first-number').val(),
            operator: operator,
@@ -45,7 +45,7 @@ function showCalculations(){
        let history = response
        for(let i=0; i < history.length; i++){
            $('#total').append(`
-                <li>${history[i].number1, '+', history[i].number2}
+                <li>${history[i].number1, history[i].operator , history[i].number2}</li>
            `)
        }
     })
