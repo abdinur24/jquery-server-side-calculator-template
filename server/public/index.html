@@ -12,20 +12,19 @@
 </head>
 
 <body>
-    <header>
-        <h1>Server Side Calculator</h1>
-    </header>
-
     <main>
+        <header>
+            <h1>Server Side Calculator</h1>
+        </header>
         <section>
-            <input id="first-number" />
-            <button id="add-button">+</button>
-            <button id="sub-button">-</button>
-            <button id="multi-button">*</button>
-            <button id="div-button">/</button>
-            <input id="second-number" />
+            <input id="first-number" type="number" placeholder="First Number"/>
+            <button id="add-button" class="selected operator">+</button>
+            <button id="sub-button" class="selected operator">-</button>
+            <button id="multi-button" class="selected operator">*</button>
+            <button id="div-button" class="selected operator">/</button>
+            <input id="second-number" type="number" placeholder="Second Number"/>
             <button id="submit-button">=</button>
-            <button id="clear-button">C</button>
+            <button id="clear-button" >C</button>
         </section>
 
         <section>

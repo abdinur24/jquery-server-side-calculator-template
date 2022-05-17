@@ -5,18 +5,10 @@ function handleReady(){
 
     $('#submit-button').on('click', getCalculation);
 
-    $('#add-button').on('click', function(){
-        operator = '+';
-    });
-    $('#sub-button').on('click', function(){
-        operator = '-';
-    });
-    $('#multi-button').on('click', function(){
-        operator = '*';
-    });
-    $('#div-button').on('click', function(){
-        operator = '/';
-    });
+    $('#add-button').on('click', add);
+    $('#sub-button').on('click', subtract);
+    $('#multi-button').on('click', multiply);
+    $('#div-button').on('click', divide);
 
     $('#clear-button').on('click', function(){
         $('#first-number').val('');
@@ -29,6 +21,30 @@ function handleReady(){
 }
 
 let operator = '';
+
+function add(event){
+    operator = '+';
+    $('.operator').removeClass('selected');
+    $(event.target).addClass('selected');
+}
+    
+function subtract(event){
+    operator = '-';
+    $('.operator').removeClass('selected');
+    $(event.target).addClass('selected');
+}
+
+function multiply(event){
+    operator = '*';
+    $('.operator').removeClass('selected');
+    $(event.target).addClass('selected');
+}
+
+function divide(event){
+    operator = '/';
+    $('.operator').removeClass('selected');
+    $(event.target).addClass('selected');
+}
 
 function getCalculation(){
     $.ajax({

@@ -1,0 +1,31 @@
+body {
+    background-color: rgba(167, 147, 83, 0.554);
+    max-width: max-content;
+    margin: auto;
+}
+
+main {
+    background-color: rgb(101, 125, 79);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 auto; 
+    width: 70%; 
+ }
+
+header{
+    text-align: center;
+}
+
+button {
+    background-color: rgb(13, 13, 45);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    min-height: 30px;
+    min-width: 50px;
+    margin-top: 10px;
+}
+.selected{
+    background-color: red;
+}
